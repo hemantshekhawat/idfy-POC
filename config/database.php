@@ -93,7 +93,7 @@ return [
             'port' => env('DB_PORT', '3306'),
             'sticky'    => true,
             'driver'    => 'mysql',
-            'database'  => 'database',
+            'database'  => 'idfy_local',
             'username'  => 'root',
             'password'  => '',
             'charset'   => 'utf8mb4',

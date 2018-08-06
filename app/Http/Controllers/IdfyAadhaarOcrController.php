@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\idfyAadharOcr;
+use App\Jobs\IdfyAadharOcrJob;
+use App\LazyPayUsers;
 use Illuminate\Http\Request;
 
 class IdfyAadhaarOcrController extends Controller
@@ -15,6 +17,14 @@ class IdfyAadhaarOcrController extends Controller
     public function index()
     {
 
+    }
+
+    public function getUserInfo(){
+
+        $lazyPayUsers = new LazyPayUsers();
+        $data = $lazyPayUsers->get(['*']);
+
+        $this->dispatch(new IdfyAadharOcrJob($data));
     }
 
     /**

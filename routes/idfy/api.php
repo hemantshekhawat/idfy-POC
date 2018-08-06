@@ -7,4 +7,4 @@
  */
 
 
-Route::get('hello-world', 'IdfyAadhaarOcrController@index');
+Route::get('getInfo', 'IdfyAadhaarOcrController@getUserInfo');
