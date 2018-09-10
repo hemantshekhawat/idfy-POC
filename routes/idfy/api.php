@@ -8,3 +8,4 @@
 
 
 Route::get('getInfo', 'IdfyAadhaarOcrController@getUserInfo');
+Route::get('getResults', 'IdfyAadhaarOcrController@getResults');

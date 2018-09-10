@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class IdfyFaceCompare extends Model
 {
+    protected $table = 'idfy_face_compare';
+
     public $fillable=[
+        "uuid",
+        "kycCaseId",
         "task_id",
         "group_id",
         "url_1",
@@ -25,12 +29,24 @@ class IdfyFaceCompare extends Model
         "response_data"
     ];
 
+
+    public $guarded = [];
+
+    protected $primaryKey = 'id';
+
+    protected $connection = 'idfy';
+
     /**
      * IdfyFaceCompare constructor.
      */
-    public function __construct()
+    public function __construct($attributes = [])
     {
-//        $this->setConnection('idfy');
+        // To not override the existing mass assignment attributes
+        parent::__construct($attributes);
+    }
+
+    public function getIdfyInProgressJobs($records = 10){
+        return $this->select(['*'])->where('status','=','in_progres')->take($records)->get();
     }
 
 

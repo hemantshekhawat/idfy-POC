@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\idfyAadharOcr;
 use App\Jobs\IdfyAadharOcrJob;
+use App\Jobs\IdfyTaskResultsJob;
 use App\LazyPayUsers;
 use Illuminate\Http\Request;
 
@@ -21,12 +22,18 @@ class IdfyAadhaarOcrController extends Controller
 
     public function getUserInfo(){
 
-        $lazyPayUsers = new LazyPayUsers();
-        $data = $lazyPayUsers->get(['*']);
 
-        $this->dispatch(new IdfyAadharOcrJob($data));
+        $lazyPayUsers = new LazyPayUsers();
+
+        for($i=0; $i<1000 ;$i++)
+        dispatch(new IdfyAadharOcrJob());
     }
 
+    public function getResults(){
+
+//        for($i=0; $i<100 ;$i++)
+            $this->dispatch(new IdfyTaskResultsJob());
+    }
     /**
      * Show the form for creating a new resource.
      *

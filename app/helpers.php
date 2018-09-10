@@ -166,3 +166,12 @@ if (! function_exists('camelcase_to_word')) {
         /x', $str));
     }
 }
+
+
+
+if (! function_exists('camelcase_to_word')) {
+    function filterDocuments($arr){
+        echo "Filter Document: Document ID ==> ". $arr['documentTypeId'];
+        return in_array($arr['documentTypeId'],\App\Jobs\IdfyAadharOcrJob::$filterDocuments);
+    }
+}
