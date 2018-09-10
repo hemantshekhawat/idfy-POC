@@ -88,17 +88,15 @@ class IdfyTaskResultsJob implements ShouldQueue
                 "response_data" => serialize($response),
                 "aadhaar_number"=> "600533812296",
 
-			    "address"=> "AddresS S/C, Banwan Lal Meena, C-60, Nand Vihar Siddharth Nagar, Getor, Jaipur Jaipur, Rajasthan 302017",
-                "date_of_birth"=> "1993-02-25",
-                "district"=> "JAIPUR",
-                "error"=> null,
-                "message"=> null,
-                "pincode"=> "302017",
-                "state"=> "RAJASTHAN",
-                "status"=> "completed",
-                "street_address"=> "AddresS S/C, Banwan Lal Meena, C-60, Nand Vihar Siddharth Nagar, Getor, Jaipur",
-                "fields_match_result"=> ["name"=> "exact"
-			]
+			    "address"=> $response['data']['aadhaarOcrResult']['address'],
+                "date_of_birth"=> $response['data']['aadhaarOcrResult']['date_of_birth'],
+                "district"=>$response['data']['aadhaarOcrResult']['district'],
+                "error"=> $response['data']['aadhaarOcrResult']['error'],
+                "message"=> $response['data']['aadhaarOcrResult']['message'],
+                "pincode"=>$response['data']['aadhaarOcrResult']['pincode'],
+                "state"=> $response['data']['aadhaarOcrResult']['state'],
+                "street_address"=>$response['data']['aadhaarOcrResult']['street_address'],
+                "fields_match_result_name"=>$response['data']['aadhaarOcrResult']['fields_match_result']["name"]
 
             ]);
             $request->save();
